@@ -9,7 +9,7 @@ namespace apiAuth.utils
 {
   public class Token
   {
-    public static async Task<string> GenerateToken(UserModel user)
+    public static async Task<string> GenerateToken(AutenticationModel user)
     {
       var tokenHandler = new JwtSecurityTokenHandler();
       var key = Encoding.ASCII.GetBytes(Startup.StaticConfig.GetSection("private_key_token").Value);

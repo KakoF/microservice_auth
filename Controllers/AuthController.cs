@@ -12,7 +12,7 @@ public class AuthController : ControllerBase
 {
 
   [HttpPost]
-  public async Task<ActionResult<dynamic>> Login([FromBody] UserModel model)
+  public async Task<ActionResult<dynamic>> Login([FromBody] AutenticationModel model)
   {
     try
     {

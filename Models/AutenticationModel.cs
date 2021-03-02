@@ -1,6 +1,6 @@
 namespace apiAuth.Models
 {
-  public class UserModel
+  public class AutenticationModel
   {
     public int Id { get; set; }
     public string Email { get; set; }
