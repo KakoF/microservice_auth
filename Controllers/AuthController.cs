@@ -16,7 +16,7 @@ public class AuthController : ControllerBase
   {
     try
     {
-      model.IsValid();
+      model.IsCustomValid();
       var token = await Token.GenerateToken(model);
       return new { token = token };
     }
