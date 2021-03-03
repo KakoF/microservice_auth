@@ -1,8 +1,7 @@
 using System;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using apiAuth.Models;
+using apiAuth.Services.Interfaces;
 using apiAuth.utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]/[action]")]
 public class AuthController : ControllerBase
 {
+  private readonly IAutenticationService _service;
+  public AuthController(IAutenticationService service)
+  {
+    _service = service;
+  }
 
   [HttpPost]
   public async Task<ActionResult<dynamic>> Login([FromBody] AutenticationModel model)
@@ -17,6 +21,7 @@ public class AuthController : ControllerBase
     try
     {
       model.IsCustomValid();
+      var userAuth = _service.Login(model);
       var token = await Token.GenerateToken(model);
       return new { token = token };
     }
